@@ -1,0 +1,86 @@
+grf {
+    grfid: "NM\00\00";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESCRIPTION);
+    version: 0;
+    min_compatible_version: 0 ;
+}
+
+cargotable {
+    DECH,RECY
+}
+
+
+item(FEAT_ROADVEHS, waste_truck, 0) {
+    property {
+        name: string(STR_VEH_WASTE_TRUCK);
+        climates_available: ALL_CLIMATES;
+        introduction_date: date(1970, 1, 1);
+        model_life: 40;
+        retire_early: 10;
+        reliability_decay: 20;
+        vehicle_life: 30;
+        cost_factor: 120;
+        running_cost_factor: 80;
+        speed: 80 ;
+        cargo_capacity: 20;
+        refittable_cargo_classes: bitmask(CC_BULK);
+        non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL);
+        power: 0;
+
+
+        weight: 12;
+        tractive_effort_coefficient: 0.85;
+        air_drag_coefficient: 0.15;
+    }
+}
+
+
+item(FEAT_CARGOS, dechets){
+    property {
+        unit_name: string(STR_CARGO_UNIT_WASTE);
+        type_name: string(STR_CARGO_TYPE_WASTE);
+        cargo_classes: bitmask(CC_BULK);
+        cargo_label: "DECH";
+        weight: 1;
+        cargo_payment_list_colour: 95;
+        is_freight: 1;
+    }
+}
+
+
+item(FEAT_CARGOS, produits_recycles) {
+    property {
+        unit_name: string(STR_CARGO_UNIT_RECYCLED);
+        type_name: string(STR_CARGO_TYPE_RECYCLED);
+        cargo_classes: bitmask(CC_PIECE_GOODS);
+        cargo_label: "RECY";
+        weight: 1;
+        cargo_payment_list_colour: 97;
+        is_freight: 1;
+        }
+    }
+
+
+spriteset(spriteset_recycling_plant, "gfx/recycling_plant.png") {
+    [0, 0, 64, 64, -32, -32]
+}
+
+
+item(FEAT_INDUSTRIES, recycling_plant, 0) {
+    property {
+        name: string(STR_INDUSTRY_RECYCLING_PLANT);
+        nearby_station_name: string(STR_STATION_RECYCLING_PLANT);
+        prob_in_game: 10;
+        prob_map_gen: 20;
+        map_colour: 117;
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        cargo_types: [
+            accept_cargo("DECH", produce_cargo("RECY",1))
+        ];
+        
+    }
+
+}
+
+

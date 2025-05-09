@@ -1,0 +1,1 @@
+[{"info": 12, "mask_file": "sprite5.png", "mask_pal": "LEGACY", "mask_rect": [0, 0, 64, 170], "offset": 0, "pixel_stats": {"alpha": 0, "anim": 0, "total": 10880, "white": 0}, "size": 1659}, {"info": 12, "mask_file": "sprite5.png", "mask_pal": "LEGACY", "mask_rect": [0, 0, 74, 170], "offset": 1659, "pixel_stats": {"alpha": 0, "anim": 0, "total": 12580, "white": 0}, "size": 1660}]

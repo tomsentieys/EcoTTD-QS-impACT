@@ -1,0 +1,14 @@
+##grflangid 0x01
+STR_GRF_NAME        :Energy_Pack
+STR_GRF_DESC        :Ajoute des objets d'energie renouvelable
+STR_CLASS_NAME      :Infrastructure
+STR_PANNEAU_SOLAIRE_NAME  :panneau solaire
+STR_CENTRE_SOLAIRE_NAME  :centre solaire
+STR_USINE_DECHET_NAME  :usine déchet
+STR_EOLIENNE_NAME  :eolienne
+STR_PYLONE_NAME  :pylone
+STR_TRAIN_ELECTRIQUE :train electrique
+STR_TRAIN_SOLAIRE:train solaire
+STR_TRAIN_HYBRID          : Train Hybride
+STR_TRAIN_HYBRID_DIESEL   : Train Hybride – mode Diesel
+STR_TRAIN_HYBRID_ELECTRIC : Train Hybride – mode Électrique

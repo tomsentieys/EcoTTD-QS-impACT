@@ -1,0 +1,309 @@
+grf {
+    grfid: "ENER";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESC);
+    version: 1;
+    min_compatible_version: 1;
+}
+
+/* ---------- PANNEAU SOLAIRE ---------- */
+spriteset (panneau_solaire_sprites, "gfx/panneau-solaire.png") {
+    [0, 0, 64, 64, -40, -32]
+}
+
+spritelayout panneau_solaire_layout {
+    childsprite {
+        sprite: panneau_solaire_sprites(0);
+        always_draw: 1;
+    }
+}
+
+item(FEAT_OBJECTS, panneau_solaire) {
+    property {
+        class: "INFR";
+        classname: string(STR_CLASS_NAME);
+        name: string(STR_PANNEAU_SOLAIRE_NAME);
+        size: [1, 1];
+        introduction_date: date(1920, 1, 1);
+        climates_available: ALL_CLIMATES;
+        num_views: 1;
+        build_cost_multiplier: 50;
+        remove_cost_multiplier: 10;
+    }
+    graphics {
+        default: panneau_solaire_layout;
+    }
+}
+/* ---------- CENTRE SOLAIRE ---------- */
+spriteset (centre_solaire_sprites, "gfx/centre-solaire.png") {
+    [0, 0, 96, 96, -38, -50]
+}
+
+spritelayout centre_solaire_layout {
+    childsprite {
+        sprite: centre_solaire_sprites(0);
+        always_draw: 1;
+    }
+}
+
+item(FEAT_OBJECTS, centre_solaire) {
+    property {
+        class: "INFR";
+        classname: string(STR_CLASS_NAME);
+        name: string(STR_CENTRE_SOLAIRE_NAME);
+        size: [1, 1];
+        introduction_date: date(1920, 1, 1);
+        climates_available: ALL_CLIMATES;
+        num_views: 1;
+        build_cost_multiplier: 50;
+        remove_cost_multiplier: 10;
+    }
+    graphics {
+        default: centre_solaire_layout;
+    }
+}
+
+/* ---------- USINE DECHET ---------- */
+spriteset (usine_dechets_sprites, "gfx/usine-dechet.png") {
+    [0, 0, 128, 128, -48, -70]
+}
+
+spritelayout usine_dechets_layout {
+    childsprite {
+        sprite: usine_dechets_sprites(0);
+        always_draw: 1;
+    }
+}
+
+item(FEAT_OBJECTS, usine_dechets) {
+    property {
+        class: "INFR";
+        classname: string(STR_CLASS_NAME);
+        name: string(STR_USINE_DECHET_NAME);
+        size: [2, 2];
+        introduction_date: date(1920, 1, 1);
+        climates_available: ALL_CLIMATES;
+        num_views: 1;
+        build_cost_multiplier: 50;
+        remove_cost_multiplier: 10;
+    }
+    graphics {
+        default: usine_dechets_layout;
+    }
+}
+
+/* ---------- EOLIENNE ---------- */
+spriteset (eolienne_sprites, "gfx/eolienne.png") {
+    [0, 0, 128, 256, -70, -158]
+}
+
+spritelayout eolienne_layout {
+    childsprite {
+        sprite: eolienne_sprites(0);
+        always_draw: 1;
+    }
+}
+
+item(FEAT_OBJECTS, eolienne) {
+    property {
+        class: "INFR";
+        classname: string(STR_CLASS_NAME);
+        name: string(STR_EOLIENNE_NAME);
+        size: [1, 1];
+        introduction_date: date(1920, 1, 1);
+        climates_available: ALL_CLIMATES;
+        num_views: 1;
+        build_cost_multiplier: 50;
+        remove_cost_multiplier: 10;
+    }
+    graphics {
+        default: eolienne_layout;
+    }
+}
+/* ---------- PYLONE ---------- */
+spriteset (pylone_sprites, "gfx/pylone.png") {
+    [0, 0, 96, 96, -50, -65]
+}
+
+spritelayout pylone_layout {
+    childsprite {
+        sprite: pylone_sprites(0);
+        always_draw: 1;
+    }
+}
+
+item(FEAT_OBJECTS, pylone) {
+    property {
+        class: "INFR";
+        classname: string(STR_CLASS_NAME);
+        name: string(STR_PYLONE_NAME);
+        size: [1, 1];
+        introduction_date: date(1920, 1, 1);
+        climates_available: ALL_CLIMATES;
+        num_views: 1;
+        build_cost_multiplier: 50;
+        remove_cost_multiplier: 10;
+    }
+    graphics {
+        default: pylone_layout;
+    }
+}
+/* ---------- TRAIN ELECTRIQUE ---------- */
+spriteset (train_electrique_spriteset_default, "gfx/eolienne.png") {
+    [0, 0, 128, 256, -70, -150]
+}
+
+spriteset (train_electrique_spriteset_loading, "gfx/eolienne.png") {
+    [0, 0, 128, 256, -70, -150]
+}
+
+spriteset (train_electrique_spriteset_loaded, "gfx/eolienne.png") {
+    [0, 0, 128, 256, -70, -150]
+}
+
+
+spritegroup train_electrique_sprites {
+    loading: [train_electrique_spriteset_loading];
+    loaded: [train_electrique_spriteset_loaded];
+    default: [train_electrique_spriteset_default]; // Ajout de default qui manquait
+}
+
+item(FEAT_TRAINS, train_electrique) {
+    property {
+        name: string(STR_TRAIN_ELECTRIQUE);
+        climates_available: ALL_CLIMATES;
+        model_life: 50;
+        introduction_date: date(1920, 1, 1);
+        reliability_decay: 20;
+        cost_factor: 70;
+        default_cargo_type: 0;
+        running_cost_factor: 100;
+        speed: 160 km/h;
+        power: 3000 hp;
+        weight: 100 ton;
+        cargo_capacity: 50;
+        engine_class: ENGINE_CLASS_ELECTRIC;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        running_cost_base: RUNNING_COST_ELECTRIC;
+        track_type: ELRL;
+    }
+    graphics {
+        purchase: train_electrique_spriteset_default;
+    }
+}
+
+
+/* ---------- TRAIN HYBRID ---------- */
+spriteset (train_hybrid_spriteset, "gfx/train-hybrid.png") {
+    [  0,   0, 80, 80, -40, -40]
+    [ 85,   0, 80, 80, -40, -40]
+    [170,   0, 80, 80, -40, -40]
+    [  0,  85, 80, 80, -40, -40]
+    [ 85,  85, 80, 80, -40, -40]
+    [170,  85, 80, 80, -40, -40]
+    [  0, 170, 80, 80, -40, -40]
+    [ 85, 170, 80, 80, -40, -40]
+}
+
+spriteset (train_hybrid_purchase, "gfx/train-hybrid.png") {
+    [85, 0, 80, 80, -40, -40]    // icône d'achat
+}
+
+// ---- Variante Diesel ----
+item(FEAT_TRAINS, item_train_hybrid_diesel, 103) {
+    property {
+        name: string(STR_TRAIN_HYBRID_DIESEL);
+        climates_available: ALL_CLIMATES;
+        model_life: 50;
+        introduction_date: date(1940, 1, 1);
+        reliability_decay: 10;
+        cost_factor: 50;
+        running_cost_factor: 70;
+        speed: 200 km/h;
+        power: 3000;
+        weight: 95 ton;
+        cargo_capacity: 60;
+        default_cargo_type: 0;
+        engine_class: ENGINE_CLASS_DIESEL;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+        running_cost_base: RUNNING_COST_DIESEL;
+        track_type: RAIL;
+    }
+    graphics {
+        default: train_hybrid_spriteset;
+        purchase: train_hybrid_purchase;
+    }
+}
+
+// ---- Variante Électrique ----
+item(FEAT_TRAINS, item_train_hybrid_electric, 104) {
+    property {
+        name: string(STR_TRAIN_HYBRID_ELECTRIC);
+        climates_available: ALL_CLIMATES;
+        model_life: 50;
+        introduction_date: date(1940, 1, 1);
+        reliability_decay: 10;
+        cost_factor: 50;
+        running_cost_factor: 70;
+        speed: 200 km/h;
+        power: 2500;
+        weight: 95 ton;
+        cargo_capacity: 60;
+        default_cargo_type: 0;
+        engine_class: ENGINE_CLASS_ELECTRIC;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        running_cost_base: RUNNING_COST_ELECTRIC;
+        track_type: RAIL;
+    }
+    graphics {
+        default: train_hybrid_spriteset;
+        purchase: train_hybrid_purchase;
+    }
+}
+/* ---------- TRAIN SOLAIRE ---------- */
+// Feuille de sprites pour le train solaire
+spriteset (train_solaire_spriteset, "gfx/train-solaire.png") {
+    [0, 0, 32, 28, -16, -14]     // Vue 1 - avant-gauche
+    [33, 0, 32, 17, -16, -8]     // Vue 2 - avant
+    [66, 0, 32, 27, -16, -13]    // Vue 3 - avant-droite
+    [99, 0, 32, 28, -16, -14]    // Vue 4 - côté droite
+    [0, 29, 32, 28, -16, -14]    // Vue 5 - arrière-droite
+    [33, 29, 32, 17, -16, -8]    // Vue 6 - arrière
+    [66, 29, 32, 27, -16, -13]   // Vue 7 - arrière-gauche
+    [99, 29, 32, 28, -16, -14]   // Vue 8 - côté gauche
+}
+
+// Sprite d'achat pour le menu
+spriteset (train_solaire_purchase, "gfx/train-solaire.png") {
+    [33, 0, 32, 17, -16, -8]    // Utilisation de la vue avant (vue 2) comme image d'achat
+}
+
+// Définition du véhicule
+item(FEAT_TRAINS, train_solaire, 304) {
+    property {
+        name: string(STR_TRAIN_SOLAIRE);
+        climates_available: ALL_CLIMATES;
+        model_life: 50;
+        introduction_date: date(1940, 1, 1);
+        reliability_decay: 8;
+        cost_factor: 70;
+        running_cost_factor: 50;
+        speed: 200 km/h;
+        power: 3500 hp;
+        weight: 80 ton;
+        cargo_capacity: 55;
+        default_cargo_type: 0;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        running_cost_base: RUNNING_COST_ELECTRIC;
+        track_type: ELRL;
+    }
+
+    graphics {
+        default: train_solaire_spriteset;
+        purchase: train_solaire_purchase;
+    }
+}

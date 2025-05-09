@@ -1,0 +1,13 @@
+##grflangid 0x01
+
+
+STR_GRF_NAME                            	:recycled_waste
+STR_GRF_DESCRIPTION                     	:Déchets & Usines de recyclage
+STR_CARGO_UNIT_WASTE						:Kg
+STR_CARGO_TYPE_WASTE						:Dechets
+STR_CARGO_DECHET							:Dechet
+STR_CARGO_UNIT_RECYCLED 					:kg de produits recyclés
+STR_CARGO_TYPE_RECYCLED 					:Produits recyclés
+STR_INDUSTRY_RECYCLING_PLANT 				:Usine de recyclage 
+STR_STATION_RECYCLING_PLANT 				:Station à coté
+STR_VEH_WASTE_TRUCK 						:Camion de collecte des déchets
